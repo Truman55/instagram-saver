@@ -1,0 +1,20 @@
+$grid-breakpoints: (
+    xs: 0,
+    sm: 531px,
+    md: 680px,
+    lg: 1000px
+);
+
+$grid-gutter-width: 20px;
+$grid-columns: 12;
+$grid-gap: 8px;
+
+$container-xs-max-width: map-get($map: $grid-breakpoints, $key: sm) - 1;
+$container-sm-max-width: map-get($map: $grid-breakpoints, $key: md) - 1;
+$container-md-max-width: map-get($map: $grid-breakpoints, $key: md) - $grid-gutter-width;
+$container-lg-max-width: map-get($map: $grid-breakpoints, $key: lg) - $grid-gutter-width;
+
+$main: #fafafa;
+$headerHeight: $grid-gap*8;
+$blackLight: #262626;
+$tg: #c8daea;

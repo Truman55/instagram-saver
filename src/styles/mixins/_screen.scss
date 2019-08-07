@@ -1,0 +1,43 @@
+@import '../variables';
+
+@mixin screen-xs-only {
+    @media only screen and (max-width: $container-xs-max-width) {
+        @content;
+    }
+}
+
+@mixin screen-sm {
+    @media only screen and (min-width: map_get($grid-breakpoints, 'sm')) {
+        @content;
+    }
+}
+
+@mixin screen-sm-only {
+    @media only screen and (min-width: map_get($grid-breakpoints, 'sm')) and (max-width: map_get($grid-breakpoints, 'md') - 1) {
+        @content;
+    }
+}
+
+@mixin screen-md {
+    @media only screen and (min-width: map_get($grid-breakpoints, 'md')) {
+        @content;
+    }
+}
+
+@mixin screen-md-only {
+    @media only screen and (min-width: map_get($grid-breakpoints, 'md')) and (max-width: map_get($grid-breakpoints, 'lg') - 1) {
+        @content;
+    }
+}
+
+@mixin screen-md-max {
+    @media only screen and (max-width: map_get($grid-breakpoints, 'lg') - 1) {
+        @content;
+    }
+}
+
+@mixin screen-lg {
+    @media only screen and (min-width: map_get($grid-breakpoints, 'lg')) {
+        @content;
+    }
+}
