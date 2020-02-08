@@ -53,30 +53,41 @@ export default {
 
 <style lang="scss" scoped>
 @import '../styles/variables';
+@import "../styles/mixins/screen";
 
 .base-input {
     position: relative;
 
     &__input {
         width: 100%;
-        height: $grid-gap*8;
+        height: $grid-gap*5;
         border: solid 1px #dbdbdb;
         border-radius: $grid-gap/2;
         color: $blackLight;
         outline: 0;
         padding: 0 $grid-gap;
-        font-size: 2em;
+        font-size: 1em;
+        
+        @include screen-sm {
+            height: $grid-gap*8;
+            font-size: 2em;
+        }
     }
 
     &__reset {
         position: absolute;
         color: $blackLight;
-        width: $grid-gap*3;
-        height: $grid-gap*3;
+        width: $grid-gap*2;
+        height: $grid-gap*2;
         right: $grid-gap;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
+
+        @include screen-sm {
+            width: $grid-gap*3;
+            height: $grid-gap*3;
+        }
     }
 }
 </style>

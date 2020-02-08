@@ -1,10 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Icon from '@/components/Icon.vue'
+// Webpack CSS import
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
 
-Vue.config.productionTip = false
+import Vue from 'vue';
+import VueOnsen from 'vue-onsenui';
+import App from './App.vue';
+import Icon from '@/components/Icon.vue';
 
-Vue.component('Icon', Icon)
+Vue.config.productionTip = false;
+
+Vue.use(VueOnsen);
+Vue.component('Icon', Icon);
 
 new Vue({
   render: h => h(App),
