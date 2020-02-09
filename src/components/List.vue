@@ -1,56 +1,58 @@
 <script>
 import Post from './Post.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: 'List',
-    data () {
-        return {
-            list: []
-        }
+    computed: {
+        ...mapGetters([
+            'posts'
+        ])
     },
     methods: {
-        createPost () {
+        goToPost (isNew = false) {
+            if (isNew) {
+                this.setActivePost(null);
+            }
+
             this.$emit('pushPage', Post);
         },
-        scanPosts () {
-            const posts = window.localStorage.getItem('posts');
-
-            if (posts) {
-                this.list = JSON.parse(posts);
-            }
-        }
+        editPost(post) {
+            this.setActivePost(post);
+            this.goToPost();
+        },
+        ...mapActions([
+            'getPosts',
+            'setActivePost'
+        ])
     },
     created () {
-        this.scanPosts();
+        this.getPosts();
     },
-    mounted () {
-        window.addEventListener('storage', () => {
-            console.log('blah')
-        }, false)
-    }
 };
 </script>
 
 <template lang="pug">
-v-ons-page
+v-ons-page.list
     v-ons-toolbar
         .center Instagram Saver
 
-    v-ons-list(
-        v-if="list.length"
-    )
-        v-ons-list-header Последние посты
-        v-ons-list-item(
-            v-for="post in list"
-        ) {{ post.url }}
-    
-    template(v-else)
-        p.empty-text Вы еще не сохранили ни одного поста
+    .list-main
+        v-ons-list(v-if="posts.length")
+            v-ons-list-header Последние посты
+            v-ons-list-item(
+                v-for="post in posts",
+                tappable,
+                @click="editPost(post)"
+            ) {{ post.name }}
+        
+        template(v-else)
+            p.empty-text Вы еще не сохранили ни одного поста
 
     v-ons-fab(
         position='bottom right'
         visible,
-        @click="createPost"
+        @click="goToPost(true)"
     )
         | +
 </template>

@@ -75,8 +75,6 @@ export class Loader {
         this.error({
             message: text
         });
-
-        console.error(text);
     }
 
     get photos () {

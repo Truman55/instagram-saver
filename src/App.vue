@@ -7,11 +7,6 @@ export default {
         return {
 			pageStack: [List],
         };
-	},
-	watch: {
-		pageStack: function (value) {
-			console.log(value);
-		}
 	}
 };
 </script>
